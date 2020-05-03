@@ -34,7 +34,14 @@ export class User {
 		});
 	}
 	// Save information about an specific user to the backend
-
+	save(): void {
+		const id = this.get('id');
+		if (id) {
+			axios.put(`http://localhost:3000/users/${id}`, this.data);
+		} else {
+			axios.post('http://localhost:3000/users', this.data);
+		}
+	}
 	// Fetch information about an specific user from backend
 	fetch(): void {
 		axios
