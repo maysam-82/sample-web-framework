@@ -14,7 +14,7 @@ Handle HTML and events caused by the user action.
 
 ### JSON Server:
 
-This is a third part package that installed via `npm` to setup a server very quickly and easily. It has the ability to receive an information and store it in the plain `JSON` file and serve that information back to us.
+This is a third part package that installed via `npm` to setup a server very quickly and easily. It has the ability to receive an information and store it in the plain `JSON` file and serve that information back to us. Json Server follows all REST conventions.
 
 `npm i -g json-server`
 As soon as installing `json-server` we have to point it to actual `JSON` file or a file that contains some `JSON` data. this file will act as a database.

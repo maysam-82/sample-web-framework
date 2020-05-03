@@ -1,6 +1,8 @@
+import axios, { AxiosResponse } from 'axios';
 interface IUserProps {
 	name?: string;
 	age?: number;
+	id?: number;
 }
 
 // Use type alias to avoid confusing in codes by adding `()=> {}`
@@ -30,5 +32,15 @@ export class User {
 		callbacks.map((callback) => {
 			callback();
 		});
+	}
+	// Save information about an specific user to the backend
+
+	// Fetch information about an specific user from backend
+	fetch(): void {
+		axios
+			.get(`http://localhost:3000/users/${this.get('id')}`)
+			.then((response: AxiosResponse): void => {
+				this.set(response.data);
+			});
 	}
 }
