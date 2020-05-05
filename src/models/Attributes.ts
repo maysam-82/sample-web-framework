@@ -6,9 +6,9 @@ export class Attributes<T> {
 	// `T[K]` means look up the interface of `T` and return a value at key of `K`.
 	//  Example:
 	// IUserProps, `K` can only be name, age or id and returns the corresponding type that is string, number or number.
-	get<K extends keyof T>(key: K): T[K] {
+	get = <K extends keyof T>(key: K): T[K] => {
 		return this.data[key];
-	}
+	};
 	set(update: T): void {
 		Object.assign(this.data, update);
 	}
