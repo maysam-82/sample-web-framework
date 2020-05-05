@@ -15,4 +15,14 @@ export class User {
 	constructor(data: IUserProps) {
 		this.attribures = new Attributes<IUserProps>(data);
 	}
+	//  In user.on() in the instance of User class, () only invoking the on method in Event class.
+	get on() {
+		return this.events.on;
+	}
+	get trigger() {
+		return this.events.trigger;
+	}
+	get get() {
+		return this.attribures.get;
+	}
 }
