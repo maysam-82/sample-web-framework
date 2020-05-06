@@ -11,24 +11,22 @@ export class UserForm extends View<User, IUserProps> {
 			this.model.set({ name });
 		}
 	};
+	onSaveUser = (): void => {
+		this.model.save();
+	};
 	eventsMap(): { [key: string]: () => void } {
 		return {
 			'click:btn-random-age': this.onSetRandomAge,
 			'click:btn-change-name': this.onChangeName,
+			'click:btn-save': this.onSaveUser,
 		};
 	}
 	template(): string {
 		return `
-    <div>
-    <h1>
-    UserForm
-    </h1>
-    <div>User Name: ${this.model.get('name')}</div>
-    <div>User Age: ${this.model.get('age')}</div>
-    <input/>
+    <input placeholder=${this.model.get('name')}>
     <button class="btn-change-name">Change Name</button>
     <button class="btn-random-age">Set Random Age</button>
-    </div>
+    <button class="btn-save">Save User</button>
     `;
 	}
 }
