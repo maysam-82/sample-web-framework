@@ -1,10 +1,9 @@
 import { User } from './models/User';
 
-const user = new User({ name: 'TEST USER', age: 1234 });
+const user = new User({ name: 'SAMPLE TEST', age: 1500 });
 
-console.log(user.get('name'));
-user.on('change', () => {
-	console.log('changed !!!');
+user.on('save', () => {
+	console.log(user);
 });
 
-user.trigger('change');
+user.save();

@@ -1,6 +1,7 @@
 import { Events } from './Events';
 import { Sync } from './Sync';
 import { Attributes } from './Attributes';
+import { AxiosResponse } from 'axios';
 export interface IUserProps {
 	name?: string;
 	age?: number;
@@ -24,5 +25,30 @@ export class User {
 	}
 	get get() {
 		return this.attribures.get;
+	}
+
+	set(update: IUserProps): void {
+		this.attribures.set(update);
+		this.events.trigger('change');
+	}
+	fetch(): void {
+		const id = this.attribures.get('id');
+		if (typeof id !== 'number') {
+			throw new Error('Cannot fetch without an id');
+		}
+		this.sync.fetch(id).then((response: AxiosResponse): void => {
+			// Calling this.set instead of this.attribute.set because we are going to trigger an event as well.
+			this.set(response.data);
+		});
+	}
+	save(): void {
+		this.sync
+			.save(this.attribures.getAll())
+			.then((response: AxiosResponse): void => {
+				this.trigger('save');
+			})
+			.catch(() => {
+				this.trigger('faile');
+			});
 	}
 }
