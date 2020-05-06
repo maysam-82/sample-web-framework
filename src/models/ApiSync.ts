@@ -4,7 +4,7 @@ interface IHasID {
 	id?: number;
 }
 // T should have a property according to `IHasID` interface.
-export class Sync<T extends IHasID> {
+export class ApiSync<T extends IHasID> {
 	constructor(public url: string) {}
 	// Save information about an specific user to the backend
 	save(data: T): AxiosPromise {
