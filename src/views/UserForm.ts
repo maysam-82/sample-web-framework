@@ -1,7 +1,8 @@
+import { User } from '../models/User';
 export class UserForm {
 	//  Element is going to reference any HTMLElements
 	// Whenever we create an instance of `UserForm`, we are going to pass in a `parent` property.  We are going to tell this class where should insert its HTML.
-	constructor(public parent: Element) {}
+	constructor(public parent: Element, public model: User) {}
 	onButtonClick(): void {
 		console.log('Hi There!');
 	}
@@ -20,6 +21,8 @@ export class UserForm {
     <h1>
     UserForm
     </h1>
+    <div>User Name: ${this.model.get('name')}</div>
+    <div>User Age: ${this.model.get('age')}</div>
     <input/>
     <button>Click Me!</button>
     </div>
