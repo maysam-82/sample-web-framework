@@ -16,8 +16,10 @@ export class UserForm {
 	};
 	onChangeName = (): void => {
 		const input = this.parent.querySelector('input');
-		const name = input.value;
-		this.model.set({ name });
+		if (input) {
+			const name = input.value;
+			this.model.set({ name });
+		}
 	};
 	eventsMap(): { [key: string]: () => void } {
 		return {
